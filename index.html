@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1eb">
+  <title>Multi Timer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div><p class="eyebrow">MULTI TIMER</p><h1>Every timer, right on time.</h1></div>
+      <div class="status-pill"><span></span><b id="summaryText">No timers running</b></div>
+    </header>
+
+    <section class="new-timer" aria-labelledby="newTimerHeading">
+      <div class="section-copy"><p class="step-number">01</p><div><h2 id="newTimerHeading">Create a timer</h2><p>It will announce the duration when time is up.</p></div></div>
+      <form id="timerForm">
+        <div class="time-inputs">
+          <label><span>Hours</span><input id="hours" type="number" inputmode="numeric" min="0" max="99" value="0"></label><span class="separator">:</span>
+          <label><span>Minutes</span><input id="minutes" type="number" inputmode="numeric" min="0" max="59" value="5"></label><span class="separator">:</span>
+          <label><span>Seconds</span><input id="seconds" type="number" inputmode="numeric" min="0" max="59" value="0"></label>
+        </div>
+        <button class="primary" type="submit"><span aria-hidden="true">+</span> Add timer</button>
+      </form>
+      <p class="form-error" id="formError" role="alert"></p>
+      <div class="quick-row" aria-label="Quick durations"><span>Quick add</span><button type="button" data-seconds="60">1 min</button><button type="button" data-seconds="180">3 min</button><button type="button" data-seconds="300">5 min</button><button type="button" data-seconds="600">10 min</button></div>
+    </section>
+
+    <section class="timers-section" aria-labelledby="timersHeading">
+      <div class="section-copy"><p class="step-number">02</p><div><h2 id="timersHeading">Your timers</h2><p id="timerCount">Add your first timer above.</p></div></div>
+      <div class="timer-list" id="timerList"></div>
+      <div class="empty-state" id="emptyState"><div class="empty-clock" aria-hidden="true"><span></span></div><b>No timers yet</b><p>Create as many as you need. They can all run at the same time.</p></div>
+    </section>
+  </main>
+
+  <template id="timerTemplate">
+    <article class="timer-card">
+      <div class="progress-bar"><span></span></div>
+      <div class="timer-main">
+        <div class="timer-identity"><span class="timer-number"></span><div><p class="timer-name"></p><span class="timer-status"></span></div></div>
+        <time class="timer-time">00:00:00</time>
+        <div class="timer-actions">
+          <button class="icon-button reset-button" type="button" title="Reset timer" aria-label="Reset timer">&#8634;</button>
+          <button class="toggle-button" type="button"><span aria-hidden="true">&#9654;</span><b>Start</b></button>
+          <button class="icon-button remove-button" type="button" title="Remove timer" aria-label="Remove timer">&#215;</button>
+        </div>
+      </div>
+    </article>
+  </template>
+  <script src="app.js"></script>
+</body>
+</html>
